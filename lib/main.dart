@@ -20,17 +20,26 @@ class RandomWords extends StatefulWidget {
 
 class RandomWordsState extends State<RandomWords> {
   @override
+  final _suggestions = <WordPair>[];
+  final _saved = new Set<WordPair>();
+  final _biggerFont = const TextStyle(fontSize: 18.0);
+
   Widget build(BuildContext context) {
     return new Scaffold (
       appBar: new AppBar(
         title: new Text('Startup Name Generator'),
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
+        ],
       ),
       body: _buildSuggestions(),
     );
   }
 
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  void _pushSaved() {
+    
+  }
+
   Widget _buildSuggestions() {
     return new ListView.builder(
       padding: const EdgeInsets.all(16.0),
@@ -48,11 +57,27 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
+
+    final alredaySaved = _saved.contains(pair);
+
     return new ListTile(
       title: new Text(
         pair.asCamelCase,
         style: _biggerFont,
-      )
+      ),
+      trailing: new Icon(
+        alredaySaved ? Icons.favorite : Icons.favorite_border,
+        color: alredaySaved ? Colors.red : null,
+      ),
+      onTap: () {
+        setState(() {
+          if (alredaySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 }
