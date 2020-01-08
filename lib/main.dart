@@ -37,7 +37,7 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   void _pushSaved() {
-    
+    print('Hello Flutter'); 
   }
 
   Widget _buildSuggestions() {
