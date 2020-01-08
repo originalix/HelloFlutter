@@ -5,32 +5,32 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget titleSection = new Container(
-      padding: const EdgeInsets.all(32.0),
-      child: new Row(
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: Row(
         children: [
-          new Expanded(
-            child: new Column(
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                new Container(
+                Container(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: new Text(
+                  child: Text(
                     'Oeschinen Lake Campground',
-                    style: new TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold
                     )
                   )
                 ),
-                new Text(
+                Text(
                   'Kandersteg, Switzerland',
-                  style: new TextStyle(color: Colors.grey[500])
+                  style: TextStyle(color: Colors.grey[500])
                 )
               ],
             )
           ),
-          new Icon(Icons.star, color: Colors.red[500]),
-          new Text('41')
+          Icon(Icons.star, color: Colors.red[500]),
+          Text('41')
         ]
       )
     );
@@ -69,10 +69,34 @@ class MyApp extends StatelessWidget {
       )
     );
 
+    Widget textSection = new Container(
+      padding: const EdgeInsets.all(32.0),
+      child: new Text(
+        '''
+Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine Lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.
+        ''',
+        softWrap: true,
+      )
+    );
 
     return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(primarySwatch: Colors.blue)
+      title: 'Flutter layout demo',
+      home: Scaffold(
+        appBar: AppBar(title: Text('Flutter layout demo')),
+        body: new ListView(
+          children: [
+            new Image.asset(
+              'images/lake.jpg',
+              height: 240.0,
+              fit: BoxFit.cover
+            ),
+            titleSection,
+            buttonSection,
+            textSection
+          ]
+        )
+      ),
+      theme: new ThemeData(primarySwatch: Colors.blue),
     );
   }
 }
