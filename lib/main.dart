@@ -18,20 +18,20 @@ class MyApp extends StatelessWidget {
   }
 
   Widget buildRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(
-          child: Image.asset('images/1.jpg'),
-        ),
-        Expanded(
-          flex: 2,
-          child: Image.asset('images/2.png'),
-        ),
-        Expanded(
-          child: Image.asset('images/3.png'),
-        ),
-      ],
+    return Container(
+      margin: EdgeInsets.fromLTRB(30, 30, 30, 30),
+      height: 600,
+      child: Card(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              width: 500,
+              child: leftColumn
+            )
+          ],
+        )
+      )
     );
   }
 
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
     ],
   );
 
-  final ratings = Container(
+  static final ratings = Container(
     padding: EdgeInsets.all(20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,11 +55,11 @@ class MyApp extends StatelessWidget {
         Text(
           '170 Reviews',
           style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w800,
-              fontFamily: 'Roboto',
-              letterSpacing: 0.5,
-              fontSize: 20
+            color: Colors.black,
+            fontWeight: FontWeight.w800,
+            fontFamily: 'Roboto',
+            letterSpacing: 0.5,
+            fontSize: 20
           )
         )
       ],
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
     height: 2
   );
 
-  final iconList = DefaultTextStyle.merge(
+  static final iconList = DefaultTextStyle.merge(
     style: descTextStyle,
     child: Container(
       padding: EdgeInsets.all(20),
@@ -105,6 +105,16 @@ class MyApp extends StatelessWidget {
           ),
         ],
       )
+    )
+  );
+
+  static final leftColumn = Container(
+    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Column(
+      children: [
+        ratings,
+        iconList
+      ]
     )
   );
 
