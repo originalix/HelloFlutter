@@ -117,15 +117,4 @@ class MyApp extends StatelessWidget {
       ]
     )
   );
-
-  Widget buildColumn() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Image.asset('images/1.jpg', fit: BoxFit.cover, width: 100, height: 100),
-        Image.asset('images/2.png', fit: BoxFit.cover, width: 100, height: 100),
-        Image.asset('images/3.png', fit: BoxFit.cover, width: 100, height: 100),
-      ],
-    );
-  }
 }
